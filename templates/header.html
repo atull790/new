@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cambria:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link href="{% static '' %}assets/css/header.css" rel="stylesheet">
+
+</head>
+
+<body>
+  <nav class="navigation-menu">
+    <div class="navigation-menu__overlay" onclick="toggleMenuClicked()"></div>
+    <button type="button" class="hamburger-menu" onclick="toggleMenuClicked()">
+      <span class="material-icons" id="open-icon">menu</span>
+      <span class="material-icons" id="close-icon">close</span>
+    </button>
+    <h1 class="site-identity-logo">Site Logo</h1>
+    <section class="navigation-menu__labels">
+      <button type="button">Home</button>
+      <button type="button">About</button>
+      <button type="button">Products</button>
+      <button type="button">Services</button>
+      <button type="button">Contact Us</button>
+    </section>
+  </nav>
+  <script src="{% static '' %}assets/js/header.js"></script>
+</body>
+
+</html>

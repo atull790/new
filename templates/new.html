@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - codingnepalweb.com -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Registration or Sign Up form in HTML CSS | CodingLab </title>
+    <link rel="stylesheet" href="style.css">
+   </head>
+
+<body>
+  <div class="wrapper">
+    <h2>testing</h2>
+    <form action="new" method="POST">
+      {% csrf_token %}
+      <div class="w3-secction">
+      <div class="w3-secction">
+<label style="background-color:rgb(255 255 255);"> Name :</label>
+<input type="text" name="name" style="width: 50%"  placeholder="Name*">
+</div><br>
+
+<div class="w3-section">
+    <label style="background-color:rgb(255 255 255);"> occupation :</label>
+<input type="text" name="occupation" style="width: 50%" placeholder="occupation*">
+</div><br>
+
+
+
+      <div class="input-box button">
+        <input type="Submit" value="Register Now">
+      </div>
+      <div class="text">
+        <h3>Already have an account? <a href="login">Login now</a></h3>
+      </div>
+      <div class="text">
+        <h3>Go Home <a href="/">Click</a></h3>
+      </div>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

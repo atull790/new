@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+    <link rel="stylesheet" type="text/css" href="{% static '' %}assets/css/bootstrap.css">
+</head>
+<body>
+    <div class="containerr">
+        <form class="login" action="login" method="POST">
+             {% csrf_token %}
+            <h2>Login</h2>
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+            <p style="font-size:25px; margin: 20px;">Don’t have an account? <a class="nav-link active" aria-current="page" href="{% url 'register' %}">Sign up
+</a></p>
+    <p style="font-size:15px">Forgot Password? <a class="nav-link active" aria-current="page" href="forgot-password">click
+</a></p>
+        </form>
+    </div>
+</body>
+{% for message in messages %}
+<h3> {{message}} </h3>
+
+{% endfor %}
+
+</html>
+

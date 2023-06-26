@@ -1,0 +1,180 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Basket</title>
+  <link rel="stylesheet" type="text/css" href="{% static '' %}assets/css/cartpage.css">
+  <style>
+    body {
+      background-image: url("{% static 'assets/img/iggg.jpg' %}");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 0 auto;
+      color: black;
+      padding: 20px;
+    }
+
+    /* Add your additional CSS styles for other elements here */
+
+    /* Example styles for the basket items */
+    .basket-product {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .basket-product .item {
+      flex: 1;
+    }
+
+    .basket-product .price,
+    .basket-product .quantity,
+    .basket-product .subtotal,
+    .basket-product .remove {
+      flex: 0 0 80px;
+      text-align: center;
+    }
+
+    /* Example styles for the summary section */
+    .summary {
+      background-color: #f9f9f9;
+      padding: 20px;
+      text-align: right;
+    }
+
+    .summary .total-items {
+      font-weight: bold;
+    }
+
+    .summary .subtotal-title {
+      margin-top: 10px;
+    }
+
+    .summary .subtotal-value,
+    .summary .promo-value,
+    .summary .total-value {
+      font-weight: bold;
+      font-size: 20px;
+    }
+
+    .summary .checkout-cta {
+      background-color: #000;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      font-size: 18px;
+      margin-top: 20px;
+    }
+
+    .summary .checkout-cta:hover {
+      background-color: #333;
+    }
+  </style>
+
+</head>
+
+<body>
+  <main>
+    {% for cart_item in cart_items %}
+    <div class="basket">
+      <form action="" method="POST">
+        {% csrf_token %}
+      <div class="basket-module">
+        <label >Enter a promotional code</label>
+        <input  type="text" name="promo-code" maxlength="5" class="promo-code-field">
+        <button class="promo-code-cta">Apply</button>
+      </div>
+      <div class="basket-labels">
+        <ul>
+          <li class="item item-heading">Item</li>
+          <li class="price">Price</li>
+          <li class="quantity">Quantity</li>
+          <li class="subtotal">Subtotal</li>
+        </ul>
+      </div>
+
+      <!-- ... previous HTML code ... -->
+
+<div class="basket-product">
+  <div class="item">
+
+    <div class="product-image">
+      <img width="120px" height="166px" src="{{cart_item.product.ArtWork.url}}" alt="Placholder Image 2" class="product-frame">
+    </div>
+    <div class="product-details">
+      <h1><strong><span class="item-quantity">1</span> x {{cart_item.Art_Description}}</strong></h1>
+      <p><strong>{{cart_item.Artist_Name}}</strong></p>
+      <p>Product Code - 232321939</p>
+    </div>
+  </div>
+  <div class="price">{{cart_item.Price}}</div>
+  <div class="quantity">
+    <input type="number" value="1" min="1" class="quantity-field" name="quantity">
+    <input type="hidden" value="{{cart_item.id}}" name="id"> <!-- Set the product ID -->
+  </div>
+  <div class="subtotal">{{cart_item.Price}}</div>
+  <div class="remove">
+    <button>Remove</button>
+  </div>
+</div>
+      </form>
+    </div>
+    {% endfor %}
+<!-- ... remaining HTML code ... -->
+
+
+
+
+
+    <aside>
+      <div class="summary">
+        <div class="summary-total-items"><span class="total-items"></span> Items in your Bag</div>
+        <div class="summary-subtotal">
+          <div class="subtotal-title">Subtotal</div>
+          <div class="subtotal-value final-value" id="basket-subtotal">{{products.Price}}</div>
+          <div class="summary-promo hide">
+            <div class="promo-title">Promotion</div>
+            <div class="promo-value final-value" id="basket-promo"></div>
+          </div>
+        </div>
+        <div class="summary-delivery">
+          <select name="delivery-collection" class="summary-delivery-selection">
+              <option value="0" selected="selected">Select Collection or Delivery</option>
+             <option value="collection">Collection</option>
+             <option value="first-class">Royal Mail 1st Class</option>
+             <option value="second-class">Royal Mail 2nd Class</option>
+             <option value="signed-for">Royal Mail Special Delivery</option>
+          </select>
+        </div>
+        <div class="summary-total">
+          <div class="total-title">Total</div>
+          <div class="total-value final-value" id="basket-total">{{products.Price}}</div>
+        </div>
+        <div class="summary-checkout">
+          <button class="checkout-cta">Go to Secure Checkout</button>
+        </div>
+      </div>
+    </aside>
+  </main>
+</body>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="{% static '' %}assets/js/cartpagejs.js"></script>
+
+
+</html>

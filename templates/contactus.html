@@ -1,0 +1,51 @@
+{% load static %}
+
+
+<head>
+    <h4>Contact us directly if you have any questions</h4>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+</head>
+
+<div class="w3-container" style="text-align: center;">
+<form action="contact-us" method="POST">
+{% csrf_token %}
+<div class="w3-secction">
+<label style="background-color:rgb(255 255 255);">First Name :</label>
+<input type="text" name="first_name" style="width: 50%"  placeholder="First Name*">
+</div><br>
+
+<div class="w3-section">
+    <label style="background-color:rgb(255 255 255);">Last Name :</label>
+<input type="text" name="last_name" style="width: 50%" placeholder="Last Name*">
+</div><br>
+<div class="w3-section">
+    <label style="background-color:rgb(255 255 255);text-align: ;">Message :</label>
+<input type="text" name="message" style="width: 50%;height: 200px;" placeholder="message">
+</div><br>
+
+
+
+<div class="w3-section">
+    <label style="background-color:rgb(255 255 255);">Email-Id :</label>
+<input type="email" name="email" style="width: 50%" placeholder="Email*">
+</div><br>
+
+
+<button type="submit" class="btn btn-success">Submit</button>
+
+
+
+</form>
+</div>
+
+<div>
+{% for message in messages %}
+    <h3> {{message}} </h3>
+{% endfor %}
+</div>
+</div>
+
+
+

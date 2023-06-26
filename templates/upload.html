@@ -1,0 +1,58 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Form Page</title>
+    <link rel="stylesheet" type="text/css" href="{% static '' %}assets/css/upload.css' %}">
+    <style>
+        body {
+            height: 100vh;
+            background-color: #f1f1f1;
+            background-size: auto;
+            background-image: url(https://i.pinimg.com/736x/53/25/8e/53258e7d23bd4e468609dbafce30c0c8.jpg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 0;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .form-container form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: tan;
+            margin: -14px;
+
+        }
+
+        .form-container form button[type="submit"] {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ show.as_p }}
+        <button type="submit">Submit</button>
+        <a href="{% url 'products' %}">Products</a>
+    </form>
+    {% for msg in messages %}
+        {{ msg }}
+    {% endfor %}
+</div>
+</body>
+</html>
